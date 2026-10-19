@@ -1,0 +1,48 @@
+---
+# tasks file for role/docker
+
+- name: System update
+  apt:
+    name: "*"
+    state: latest
+
+- name: Install Docker.io
+  apt:
+    name: docker.io
+    state: latest
+
+- name: Add user to docker group
+  user:
+    name: ansible
+    comment: Ansible User
+    group: docker
+
+- name: Add user to docker group
+  user:
+    name: "{{item}}"
+    comment: Ansible User
+    groups: docker
+    append: true
+    # sudo usermod -aG docker ansible
+  loop: "{{docker_users}}"
+
+- name: Create command to show docker version
+  command: docker --version
+  register: docker_version
+
+- name: Print docker version
+  debug:
+    msg: "{{docker_version}}"
+
+- name: Docker Restart
+  service:
+    name: docker
+    state: restarted
+
+- name: Create command to show docker version
+  command: docker --version
+  register: docker_version
+
+- name: Print docker version
+  debug:
+    msg: "{{docker_version}}"

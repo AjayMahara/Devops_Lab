@@ -1,0 +1,236 @@
+    1  docker
+    2  docker ps -a
+    3  exit
+    4  ssh ansible@172.18.0.2
+    5  clear
+    6  pwd
+    7  exit
+    8  ssh ansible@172.18.0.2
+    9  ls
+   10  ansible --version
+   11  apt install ansible
+   12  sudo apt update
+   13  sudo apt install ansible
+   14  clear
+   15  ansible --version
+   16  python3 --version
+   17  docker run -d   --name ansible-node02   --network ansible-net   ansible-node:latest
+   18  history
+   19  docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ansible-node02
+   20  ssh ansible@172.18.0.3
+   21  ls
+   22  vi hosts.ini 
+   23  nano hosts.ini 
+   24  vim hosts.ini 
+   25  apt install vi
+   26  sudo 
+   27  sudo su
+   28  history
+   29  vi hosts.ini 
+   30  ansible -i hosts.ini -a "uptime"
+   31  clear
+   32  vi hosts.ini 
+   33  ansible -i hosts.ini -a "uptime"
+   34  clear
+   35  cat hosts.ini 
+   36  ansible -i hosts.ini servers -a "uptime"
+   37  ansible install sshpass
+   38  clear
+   39  apt install sshpass
+   40  sudo su
+   41  ansible -i hosts.ini servers -a "uptime"
+   42  cat hosts.ini 
+   43  ssh ansible@172.18.0.3
+   44  vi hosts.ini 
+   45  ansible -i hosts.ini servers -a "uptime"
+   46  ansible -i hosts.ini servers -a "df -h"
+   47  ansible -i hosts.ini servers -a "free -h"
+   48  cat hosts.ini 
+   49  clear
+   50  mkdir playbooks
+   51  cd playbooks/
+   52  ls
+   53  vi hello.yml
+   54  ansible-playbook hello.yml i ../hosts.ini 
+   55  ansible-playbook hello.yml -i ../hosts.ini 
+   56  ansible-playbook hello.yml -i ../hosts.ini  -v
+   57  vi hello.yml
+   58  ansible-playbook hello.yml -i ../hosts.ini  -v
+   59  vi hello.yml
+   60  ansible-playbook hello.yml -i ../hosts.ini  -v
+   61  vi hello.yml
+   62  ansible-playbook hello.yml -i ../hosts.ini  -v
+   63  vi hello.yml 
+   64  ansible-playbook hello.yml -i ../hosts.ini  -v
+   65  vi hello.yml 
+   66  ansible-playbook hello.yml -i ../hosts.ini  -v
+   67  clear
+   68  cd ..
+   69  clear
+   70  ansible -i hosts.ini servers -m setup
+   71  clear
+   72  ll
+   73  history
+   74  history >> history.txt
+   75  cat history.txt 
+   76  clear
+   77  cls
+   78  ls
+   79  cd playbooks/
+   80  ls
+   81  vi install_package.yml
+   82  ansible-playbook -i ../hosts.ini install_package.yml -v
+   83  vi install_package.yml 
+   84  ansible-playbook -i ../hosts.ini install_package.yml -v
+   85  clear
+   86  npm
+   87  exit
+   88  history
+   89  cd ../ansible/
+   90  > history.txt 
+   91  history > history.txt
+   92  clear
+   93  ls
+   94  cd playbooks/
+   95  ls
+   96  vi loop.yml
+   97  cat install_package.yml 
+   98  vi loop.yml 
+   99  cp loop.yml loop_test.yml
+  100  vi loop_test.yml 
+  101  ansible-playbook -i ../hosts.ini loop_test.yml
+  102  ansible-playbook -i ../hosts.ini loop_test.yml -v
+  103  ls
+  104  clear
+  105  cp loop.yml condition.yml
+  106  vi condition.yml 
+  107  terraform
+  108  clear
+  109  alias
+  110  cd /var
+  111  ls
+  112  cd local/
+  113  ls
+  114  cd ..
+  115  locate www
+  116  find ww
+  117  find www
+  118  cd ..
+  119  ls
+  120  cd usr/
+  121  ls
+  122  cd ../home/
+  123  ls
+  124  exit
+  125  ls
+  126  pwd
+  127  clear
+  128  cd ../ansible/
+  129  ls
+  130  ansible-galazy init role/docker
+  131  ansible-galaxy init role/docker
+  132  ls
+  133  cd role/
+  134  ls
+  135  tree
+  136  sudo apt update
+  137  sudo apt install tree
+  138  ls
+  139  cd docker/
+  140  tree
+  141  ll
+  142  users
+  143  users --help
+  144  list users
+  145  users --list
+  146  clear
+  147  docker ps -a
+  148  groups
+  149  vi tasks/main.yml 
+  150  vi defaults/main.yml 
+  151  vi vars/main.yml 
+  152  vi tasks/main.yml 
+  153  vi handlers/main.yml 
+  154  tree
+  155  cd ../../playbooks/
+  156  vim install_docker_with_role.yml
+  157  ansible-playbook -i ../hosts.ini install_docker_with_role.yml 
+  158  cd ..
+  159  ls
+  160  mv role/ roles/
+  161  ls
+  162  cd playbooks/
+  163  ansible-playbook -i ../hosts.ini install_docker_with_role.yml 
+  164  vi install_docker_with_role.yml 
+  165  cd ..
+  166  tree
+  167  pwd
+  168  vi ansible.cfg
+  169  cd playbooks/
+  170  ansible-playbook -i ../hosts.ini install_docker_with_role.yml 
+  171  tree
+  172  clear
+  173  ansible-playbook -i ../hosts.ini install_docker_with_role.yml 
+  174  cd ..
+  175  tree
+  176  cat ansible.cfg 
+  177  cd playbooks/
+  178  ansible -version
+  179  ansible --version
+  180  cd ..
+  181  ansible --version
+  182  clear
+  183  pwd
+  184  ls
+  185  ansible-playbook -i hosts.ini playbooks/install_docker_with_role.yml 
+  186  cd roles/
+  187  grep -r "admin"
+  188  vi docker/tasks/main.yml 
+  189  ansible-playbook -i hosts.ini playbooks/install_docker_with_role.yml 
+  190  cd ..
+  191  ansible-playbook -i hosts.ini playbooks/install_docker_with_role.yml 
+  192  docker ps -a
+  193  vi roles/docker/tasks/main.yml 
+  194  vi playbooks/install_docker_with_role.yml 
+  195  cat playbooks/install_docker_with_role.yml 
+  196  cat roles/docker/tasks/main.yml 
+  197  clear
+  198  vi roles/docker/tasks/main.yml 
+  199  ansible-playbook -i hosts.ini playbooks/install_docker_with_role.yml 
+  200  ssh ansible@ansible-node01
+  201  history | grep ssh
+  202  ssh ansible@172.18.0.2
+  203  clear
+  204  ls
+  205  ansible-playbook -i hosts.ini playbooks/install_docker_with_role.yml 
+  206  vi roles/docker/tasks/main.yml 
+  207  ansible-playbook -i hosts.ini playbooks/install_docker_with_role.yml 
+  208  ansible --version
+  209  zcat
+  210  cd ~/Downl
+  211  cd ~/
+  212  ls
+  213  pwd
+  214  ls
+  215  ll
+  216  wpd
+  217  pwd
+  218  clear
+  219  ls
+  220  exit
+  221  pwd
+  222  cd ansible/
+  223  ls
+  224  vi Dockerfile 
+  225  cat history.txt 
+  226  cd playbooks/
+  227  ls
+  228  cat install_package.yml 
+  229  cat install_docker_with_role.yml 
+  230  history
+  231  ls
+  232  cd ..
+  233  ls
+  234  > history.txt 
+  235  cat history.txt 
+  236  history > history.txt 

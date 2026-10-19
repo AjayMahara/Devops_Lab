@@ -1,0 +1,19 @@
+- name: Install Packages
+  hosts: servers
+  become: yes
+
+  vars:
+    packages_to_install:
+      - tree
+      - zip
+      - jq
+      - unzip
+      - wget
+      - apache2
+
+  tasks:
+    - name: Install Tree Package
+      apt:
+        name: "{{item}}"
+        state: present
+      loop: "{{packages_to_install}}"
