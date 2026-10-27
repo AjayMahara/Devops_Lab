@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grade-submission-api-deployment
+  namespace: grade-submission
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1   #The maximum number of pods that can be created over the desired number of pods.
+      maxUnavailable: 50%   #The maximum number of pods that can be unavailable during the update.
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: grade-submission-api
+  template:
+    metadata:
+      name: grade-submission-api
+      labels:
+        app.kubernetes.io/name: grade-submission
+        app.kubernetes.io/component: backend
+        app.kubernetes.io/instance: grade-submission-api
+    spec:
+      containers:
+      - name: grade-submission-api
+        image: rslim087/kubernetes-course-grade-submission-api:stateless-v4
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "128m"
+          limits:
+            memory: "128Mi"
+            cpu: "128m"
+        ports:
+          - containerPort: 3000
