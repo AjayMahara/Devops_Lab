@@ -20,6 +20,11 @@ spec:
       containers:
       - name: mongodb
         image: mongo:9
+        env:
+          - name: MONGO_INITDB_ROOT_USERNAME
+            value: "root"
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            value: "Password123"
         ports:
         - containerPort: 27017
         volumeMounts:

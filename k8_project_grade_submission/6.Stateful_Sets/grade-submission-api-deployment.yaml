@@ -18,7 +18,16 @@ spec:
     spec:
       containers:
       - name: grade-submission-api
-        image: rslim087/kubernetes-course-grade-submission-api:stateless
+        image: rslim087/kubernetes-course-grade-submission-api:stateless-v3
+        env:
+          - name: MONGODB_HOST
+            value: mongodb
+          - name: MONGODB_PORT
+            value: "27017"
+          - name: MONGODB_USER
+            value: "root"
+          - name: MONGODB_PASSWORD
+            value: "Password123"
         livenessProbe:
           httpGet:
             path: /healthz
