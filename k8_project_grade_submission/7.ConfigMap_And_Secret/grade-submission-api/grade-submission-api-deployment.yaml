@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grade-submission-api-deployment
+  namespace: grade-submission
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: grade-submission-api
+  template:
+    metadata:
+      name: grade-submission-api
+      labels:
+        app.kubernetes.io/name: grade-submission
+        app.kubernetes.io/component: backend
+        app.kubernetes.io/instance: grade-submission-api
+    spec:
+      containers:
+      - name: grade-submission-api
+        image: rslim087/kubernetes-course-grade-submission-api:stateless-v3
+        envFrom:
+          - configMapRef:
+              name: grade-submission-api-configs
+          - secretRef:
+              name: grade-submission-api-secret
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 3000
+          initialDelaySeconds: 15 # Like grace period to wait before the application has complated startup .
+          periodSeconds: 5 # Probe every 5 seconds to check liveness of application
+        readinessProbe:
+          httpGet:
+            path: /readyz
+            port: 3000
+          periodSeconds: 5 # Probe every 5 seconds to check readiness of application
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "128m"
+          limits:
+            memory: "128Mi"
+            cpu: "128m"
+        ports:
+          - containerPort: 3000
